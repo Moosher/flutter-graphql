@@ -1,4 +1,4 @@
-# country_list
+# Country List with GraphQl
 
 A project mainly used for testing the integration between flutter and graphQl
 
@@ -6,10 +6,10 @@ A project mainly used for testing the integration between flutter and graphQl
 
 Developed on flutter 2.0.1 (stable channel)
 
-# Commands:
+### Commands:
 flutter pub get
 flutter packages pub run build_runner build
 flutter run (or run with your IDE)
 
-# Tests
+### Tests
 There are two tests in the test file, but only one is working, the widgetTest seems not to be working well with the widgets i used (Scaffold/GraphQLprovider)
