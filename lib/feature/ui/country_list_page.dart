@@ -17,7 +17,7 @@ class _CountryListPageState extends State<CountryListPage> {
     super.initState();
   }
 
-  final readRepositories = (filters) => """
+  final countryQuery = (filters) => """
   query {
     countries ${filters != null ? (filters['currency'] != null ? '(filter: { currency: {eq: "${filters['currency']}"}})' : filters['code'] != null ? ('(filter: { code: {eq: "${filters['code']}"}})') : filters['continent'] != null ? ('(filter: { continent: {eq: "${filters['continent']}"}})') : '') : ''}{
       code
@@ -49,7 +49,7 @@ class _CountryListPageState extends State<CountryListPage> {
         ),
         body: Query(
           options: QueryOptions(
-            document: gql(readRepositories(this.filters)),
+            document: gql(countryQuery(this.filters)),
           ),
           builder: (QueryResult result,
               {VoidCallback refetch, FetchMore fetchMore}) {
@@ -57,7 +57,8 @@ class _CountryListPageState extends State<CountryListPage> {
               return Center(child: CircularProgressIndicator());
             }
 
-            if (result.data == null || (result.data['countries'] as List).isEmpty) {
+            if (result.data == null ||
+                (result.data['countries'] as List).isEmpty) {
               return Center(child: Text("No data found"));
             }
 
@@ -158,7 +159,10 @@ class _CountryListPageState extends State<CountryListPage> {
               child: new Text("Search"),
               onPressed: () {
                 this.setState(() {
-                  filters = <String, String>{filterType: filterInput.text};
+                  filters = <String, String>{
+                    filterType:
+                        filterInput.text.isNotEmpty ? filterInput.text : null
+                  };
                 });
                 Navigator.of(context).pop();
               },
