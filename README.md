@@ -2,9 +2,10 @@
 
 A project mainly used for testing the integration between flutter and graphQl
 
-## Getting Started
+## Relevant versions
 
-Developed on flutter 2.0.1 (stable channel)
+flutter 2.0.1 (stable channel)
+graphql_flutter 5.0.0
 
 ### Commands:
 flutter pub get  
