@@ -8,7 +8,7 @@ Developed on flutter 2.0.1 (stable channel)
 
 ### Commands:
 flutter pub get  
-flutter packages pub run build_runner build  
+flutter packages pub run build_runner build (actually not needed, because i don't included the .g.dart files on gitignore)
 flutter run (or run with your IDE)  
 
 ### Tests
